@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet CNFPT</title>
+    <style>
+	/* Styles pour le thème clair */
+        /* Styles pour le tableau */
+		
+		table {
+			
+			margin-bottom: 20px; /* Ajoute une marge en bas du tableau */
+			border-collapse: collapse;
+			border: 3px solid #1b1b1d;
+			border-radius: 5px; /* Ajouter des coins arrondis */
+			letter-spacing: 1px;
+			font-family: sans-serif;
+			font-size: .8rem;
+			width: 90%; /* Largeur du tableau, ajustez selon vos besoins */
+			max-width: 1550px; /* Largeur maximale du tableau pour éviter qu'il ne devienne trop large */
+			color: #d2d3d3;
+		}
+		
+		.table-container {
+			border-radius: 10px; /* Ajouter des coins arrondis de 10 pixels */
+			overflow: hidden; /* Masquer le contenu dépassant des coins arrondis */
+		}
+
+		td,
+		th {
+			border: 3px solid #1b1b1d;
+			border-radius: 15px; /* Ajouter des coins arrondis */
+			padding: 5px 10px;
+		}
+
+		td {
+			text-align: center;
+		}
+		
+        thead,
+        tfoot {
+            background-color: #2a2a2d;
+            color: #fff;
+        }
+
+        tbody {
+			background-color: #2a2a2d;
+		}
+
+
+		caption {
+			padding: 10px;
+			caption-side: bottom;
+		}
+		
+		/************************************************************************/
+		
+		/* Styles pour le formulaire */
+		
+		form {
+			margin-bottom: 20px; /* Ajoute une marge en bas du tableau */
+			margin: 0 auto; /* Centre le formulaire horizontalement */
+			border-collapse: collapse;
+			border: none; /* Supprime la bordure */
+			border-radius: 10px; /* Ajouter des coins arrondis */
+			letter-spacing: 1px;
+			font-family: sans-serif;
+			width: 90%; /* Largeur du formulaire, ajustez selon vos besoins */
+			max-width: 1550px; /* Largeur maximale du formulaire pour éviter qu'il ne devienne trop large */
+			background-color: #2a2a2d; /* Changer la couleur de fond du formulaire */
+			
+		}
+		
+		fieldset {
+			border: none; /* Supprime la bordure */
+			color: #d2d3d3;
+		}
+		
+		/************************************************************************/
+		
+		/* Styles pour les champs de saisie */
+		
+		input[type="text"] {
+			margin-left: 1%;
+			padding: 1px;
+			font-size: medium;
+			width: 300px;
+			border: 1px solid #d2d3d3;
+			color: #d2d3d3;
+			font-weight: bold; /* Rendre le texte en gras */
+			border-radius: 5px; /* Ajouter des coins arrondis */
+			
+		}
+		
+		input {
+			background-color: #3b3b3f;
+			border: 1px solid #90aeef;
+		}
+
+		/* Styles pour les champs de saisie au passage de la souris */
+		
+		input[type="text"]:hover {
+			border: 1px solid #90aeef;
+			color: #90aeef;
+			font-weight: bold; /* Rendre le texte en gras */
+		}
+		
+		
+		 /* Lorsque le champ de saisie est en focus, changez sa largeur à 100% */
+		 input[type=text]:focus {
+			 width: 2%;
+			 border: 1px solid #90aeef;
+		 }
+		 
+		 input[type=text] {
+			  width: 2.7%;
+			  -webkit-transition: width 0.15s ease-in-out;
+			  transition: width 0.15s ease-in-out;
+		 }
+		 
+		 select {
+			border: 1px solid #d2d3d3;
+			background-color: #3b3b3f;
+			color: #d2d3d3;
+			font-weight: bold; /* Rendre le texte en gras */
+			border-radius: 5px; /* Ajouter des coins arrondis */
+		}
+		
+		 select:hover {
+			border: 1px solid #90aeef;
+			color: #90aeef;
+			font-weight: bold; /* Rendre le texte en gras */
+		}
+		
+		select option:hover {
+			background-color: #90aeef; /* Couleur de fond au survol */
+			color: #3b3b3f; /* Couleur du texte au survol */
+		}
+		 
+				
+		/************************************************************************/
+		
+			
+		/* Styles pour les autres éléments */
+
+		
+		body, html {
+			width: 100%;
+			height: 115%;
+			background-color: #1b1b1d;
+			font-family: Arial, sans-serif;
+            margin: 20px;
+		}
+		
+
+		#entete {
+			border: 2px solid #2a2a2d;
+			top: 0;
+			left: 0;
+			height: 80px; 
+			width: 100%;
+			background-color: #1b1b1d;
+			position: fixed;
+			z-index: 1000;
+			}
+		
+		#searchbarStructure{
+			 margin-left: 1%;
+			 padding:7px;
+			 position:absolute;
+			 font-size: medium;
+		   }
+
+		#searchbarDepartement{
+			 margin-left: 1%;
+			 padding:7px;
+			 position:absolute;
+			 font-size: medium;
+		   }
+		   
+			   
+		   
+		#additionbar{
+			 margin-left: 1%;
+			 padding:7px;
+			 position:absolute;
+			 font-size: medium;
+			 width:200px;
+		   }
+		   
+
+		#choix_categorie{
+			 padding:4px;
+			 font-size: medium;
+			 width:225px;
+		   }
+		 
+
+        #bouton {
+			border-radius: 5px; /* Ajouter des coins arrondis */
+            background-color: #2a2a2d;
+            color: #90aeef;
+			border: 1px solid #90aeef;
+            padding: 1.5px 10px;
+            cursor: pointer; 
+            text-decoration: none;
+            text-align: center;
+			font-weight: bold; /* Rendre le texte en gras */
+        }
+
+        #bouton:hover {
+            background-color: #90aeef;
+			border: 1px solid #90aeef;
+			color: #2a2a2d;
+        }
+		
+		
+        label {
+            font-weight: normal;
+        }
+		
+		.required {
+        color: #90aeef;
+		}
+		
+		p.bold {
+			font-weight: bold;
+		}
+		
+		#courrielPrincipal,
+		#courrielSecours,
+		#lockedReason,
+		#sAMAccountName,
+		#Utilisateur,
+		#dateModification,
+		#dateErreur,
+		#dateDerniereConnexion,
+		#dateCreation,
+		#Matricule,
+		#Identifiant,
+		#Département,
+		#Délégation,
+		#IdFicheAgent,
+		#Mailperso,
+		#Mailpro,
+		#MauvaiseAdMail,
+		#BonneAdMail,
+		#collectivite,
+		#Nom,
+		#AdMailGestionnaire,
+		#telephone{
+			 margin-left: 1%;
+			 padding:1px;
+			 position:absolute;
+			 font-size: medium;
+			 width:300px;
+			 
+		}
+		      
+		
+		#CompteRetrouve,
+		#etatCompteAgent,
+		#AccountLocked,
+		#compteECommunautes{
+			 margin-left: 1%;
+			 padding:1px;
+			 /* border-radius: 5px; */
+			 position:absolute;
+			 /* transition: .5s ease;  */
+			 /* top: 17.8%; */
+			 /* left: 26%; */
+			 font-size: medium;
+			 width:100px;
+		}
+		
+		::selection {
+			background-color: #90aeef; /* Changer la couleur de surlignage */
+			color: #2a2a2d; /* Changer la couleur du texte surligné */
+		}
+		
+		
+    </style>
+    <script>
+        // Votre code JavaScript ici
+        var input;
+        var Delegation;
+        var Groupe;
+        var NewPass;
+        var Category;
+        var newLength;
+
+        
+
+		var Couleurs = ["Orange", "Rose", "Violet", "Magenta", "Fushia", "Mauve", "Cyan", "Rouge", "Jaune", "Azur", "Blanc", "Bleu" ];
+		var Meteo = ["Nuages", "Soleil", "Eclair", "Lune", "Orage", "Neige", "Ciel"];
+		var Nature = ["Feuille", "Arbre", "Fleurs", "Foret", "Plume", "Ocean", "Sable", "Tulipe", "Marguerite", "Muget", "Violette", "Tournesol", "Sapin", "Roseau", "Bambou", "Lilas", "Palmier", "Rosier", "Cerisier", "Fraisier", "Olivier", "Plage", "Montagne" ];
+		var Formation = ["Formation" ];  
+		var Sports = ["Billard", "Poker", "Petanque", "Foot", "Basket", "Tennis", "Golf", "Danse" ];
+
+
+		//Permet d'afficher l'ancienne délégation d'un département 
+		function search_delegation() {
+			let Departement = document.getElementById('searchbarDepartement').value;
+			let Structure = document.getElementById('searchbarStructure').value;
+			
+			
+			if (Departement == 01 || Departement == 03 || Departement == 07 || Departement == 15 || Departement == 26 || Departement == 38 || Departement == 42 || Departement == 43 || Departement == 63 || Departement == 69 || Departement == 73 || Departement == 74 || Structure == 03 || Structure == 21 || Structure == 22 || Structure == 80){
+				Delegation = "AURA" ;
+				Groupe = "AURA-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 21 || Departement == 07 || Departement == 25 || Departement == 39 || Departement == 58 || Departement == 70 || Departement == 71 || Departement == 89 || Departement == 90 || Structure == 04 || Structure == 09 || Structure == 81){
+				Delegation = "Bourgogne Franche-Comté" ;
+				Groupe = "BFC-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 22 || Departement == 29 || Departement == 35 || Departement == 56 || Structure == 05){
+				Delegation = "Bretagne" ;
+				Groupe = "BRE-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 20 || Structure == 08){
+				Delegation = "Corse" ;
+				Groupe = "CORS-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 18 || Departement == 28 || Departement == 36 || Departement == 37 || Departement == 41 || Departement == 45 || Structure == 06){
+				Delegation = "Centre-Val de Loire" ;
+				Groupe = "CVDL-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 08 || Departement == 10 || Departement == 51 || Departement == 52 || Departement == 54 || Departement == 55 || Departement == 57 || Departement == 67 || Departement == 68 || Departement == 88 || Structure == 01 || Structure == 07 || Structure == 12 || Structure == 82){
+				Delegation = "Grand Est" ;
+				Groupe = "GRE-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 971 || Structure == 31){
+				Delegation = "Guadeloupe" ;
+				Groupe = "GUA-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 973 || Structure == 33){
+				Delegation = "Guyane" ;
+				Groupe = "GUY-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 02 || Departement == 59 || Departement == 60 || Departement == 62 || Departement == 80 || Structure == 14 || Structure == 18 || Structure == 83){
+				Delegation = "Hauts de France" ;
+				Groupe = "HDF-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 972 || Structure == 32){
+				Delegation = "Martinique" ;
+				Groupe = "MAR-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 976 || Structure == 34){
+				Delegation = "Mayotte" ;
+				Groupe = "MAY-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 14 || Departement == 27 || Departement == 50 || Departement == 61 || Departement == 76 || Structure == 15 || Structure == 16 || Structure == 85){
+				Delegation = "Normandie" ;
+				Groupe = "NORM-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 16 || Departement == 17 || Departement == 19 || Departement == 23 || Departement == 24 || Departement == 33 || Departement == 40 || Departement == 47 || Departement == 64 || Departement == 79 || Departement == 86 || Departement == 87 || Structure == 02 || Structure == 11 || Structure == 19 || Structure == 86){
+				Delegation = "Nouvelle-Aquitaine" ;
+				Groupe = "NVA-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 09 || Departement == 11 || Departement == 12 || Departement == 30 || Departement == 31 || Departement == 32 || Departement == 34 || Departement == 46 || Departement == 48 || Departement == 65 || Departement == 66 || Departement == 81 || Departement == 82 || Structure == 10 || Structure == 13 || Structure == 87){
+				Delegation = "Occitanie" ;
+				Groupe = "OCC-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 04 || Departement == 05 || Departement == 06 || Departement == 13 || Departement == 83 || Departement == 84 || Structure == 20){
+				Delegation = "Provence-Alpes-Côte d'Azur" ;
+				Groupe = "PACA-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 44 || Departement == 49 || Departement == 53 || Departement == 72 || Departement == 85 || Structure == 17){
+				Delegation = "Pays de la Loire" ;
+				Groupe = "PDLL-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 974 || Structure == 26){
+				Delegation = "Réunion" ;
+				Groupe = "REU-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Departement == 75 || Departement == 77 || Departement == 78 || Departement == 91 || Departement == 92 || Departement == 93 || Departement == 94 || Departement == 95 || Structure == 00 || Structure == 23 || Structure == 24 || Structure == 84){
+				Delegation = "Ile de France" ;
+				Groupe = "IDF-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Structure == 45){
+				Delegation = "INSET DE DUNKERQUE" ;
+				Groupe = "DUN-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Structure == 46){
+				Delegation = "INSET DE NANCY" ;
+				Groupe = "NCY-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Structure == 47){
+				Delegation = "INSET D'ANGERS" ;
+				Groupe = "ANG-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Structure == 48){
+				Delegation = "INSET DE MONTPELLIER" ;
+				Groupe = "MON-MOA-N1-FORM-IEL-GDA" ;
+			}
+			else if (Structure == 49){
+				Delegation = "INSET DE STRASBOURG" ;
+				Groupe = "STR-MOE-N1-RSI" ;
+			}
+			else if (Departement == "" || Structure == ""){
+				Delegation = "" ;
+				Groupe = "" ;
+			}
+			else {
+				alert("Ce département n'est pas pris en charge. Merci de vérifier les régions correspondantes");
+			}
+			
+			
+			document.getElementById('delegation').innerHTML = Delegation ; 	
+			document.getElementById('groupe').innerHTML = Groupe ; 
+			
+		}
+
+		//Permet d'afficher le resultat lorsqu'on appuy sur la touche "Entrée" du clavier
+		document.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				search_delegation();
+				let Departement = document.getElementById('searchbarDepartement').value = "" ;
+				let Structure = document.getElementById('searchbarStructure').value = "" ;
+			}
+		});
+
+		function search_mdp(myMin, myMax) {
+			var currentYear = new Date().getFullYear();
+			var randomDigits = () => Math.floor(Math.random() * 90) + 10; // generates a random number between 10 and 99
+
+			function getMdp(word) {
+				if (word.length < 6) {
+					return word + currentYear;
+				} else {
+					return word + randomDigits();
+				}
+			}
+
+			COULEURS = Couleurs[Math.floor(Math.random() * Couleurs.length)];
+			document.getElementById('COULEURS').innerHTML = getMdp(COULEURS);
+
+			METEO = Meteo[Math.floor(Math.random() * Meteo.length)];
+			document.getElementById('METEO').innerHTML = getMdp(METEO);
+
+			NATURE = Nature[Math.floor(Math.random() * Nature.length)];
+			document.getElementById('NATURE').innerHTML = getMdp(NATURE);
+
+			FORMATION = Formation[Math.floor(Math.random() * Formation.length)];
+			document.getElementById('FORMATION').innerHTML = FORMATION;
+			Chiffre_Formation = Math.floor(Math.random() * (myMax - myMin) + myMin);
+			document.getElementById('Chiffre_Formation').innerHTML = Chiffre_Formation;
+
+			SPORTS = Sports[Math.floor(Math.random() * Sports.length)];
+			document.getElementById('SPORTS').innerHTML = getMdp(SPORTS);
+		}
+
+
+		function save_password (){
+			let NewPass = document.getElementById('additionbar').value
+			let Category = document.getElementById('choix_categorie').value
+			
+			if (Category == 03){
+				let newLengthCouleurs = Couleurs.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 05){
+				let newLengthMeteo = Meteo.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 06){
+				let newLengthNature = Nature.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 07){
+				let newLengthObjets = Formation.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 09){
+				let newLengthSports = Sports.push(NewPass);
+				alert("Votre mot de passe a été ajouté.") ;
+			}
+			else if (Category == 00){
+				alert("Vous devez sélectionner une catégorie avant d'ajouté un nouveau mot de passe.") ;
+			}
+		}
+		
+		function copyGroupe() {
+			// Sélectionne le texte à copier
+			var groupeText = document.getElementById("groupe").innerText;
+
+			// Crée un élément temporaire <textarea> pour stocker le texte à copier
+			var tempTextArea = document.createElement("textarea");
+			tempTextArea.value = groupeText;
+
+			// Ajoute l'élément temporaire à la page
+			document.body.appendChild(tempTextArea);
+
+			// Sélectionne et copie le texte dans le presse-papiers
+			tempTextArea.select();
+			document.execCommand("copy");
+
+			// Supprime l'élément temporaire
+			document.body.removeChild(tempTextArea);
+
+			
+		}
+		
+		function copyInset(text) {
+		  // Créer un élément temporaire de type textarea pour copier le texte
+		  var textarea = document.createElement("textarea");
+		  // Mettre le texte à copier dans l'élément textarea
+		  textarea.value = text;
+		  // Ajouter l'élément textarea à la fin du corps du document
+		  document.body.appendChild(textarea);
+		  // Sélectionner le contenu de l'élément textarea
+		  textarea.select();
+		  // Copier le texte sélectionné dans le presse-papiers
+		  document.execCommand("copy");
+		  // Supprimer l'élément textarea temporaire
+		  document.body.removeChild(textarea);
+		  
+		}
+		
+		function copyText() {
+			// Récupérer les éléments DOM
+			const elements = {
+				CompteRetrouve: document.getElementById('CompteRetrouve'),
+				Matricule: document.getElementById('Matricule'),
+				Identifiant: document.getElementById('Identifiant'),
+				Departement: document.getElementById('Département'),
+				Delegation: document.getElementById('Délégation'),
+				CourrielPrincipal: document.getElementById('courrielPrincipal'),
+				CourrielSecours: document.getElementById('courrielSecours'),
+				AccountLocked: document.getElementById('AccountLocked'),
+				LockedReason: document.getElementById('lockedReason'),
+				CompteECommunautes: document.getElementById('compteECommunautes'),
+				SAMAccountName: document.getElementById('sAMAccountName'),
+				Utilisateur: document.getElementById('Utilisateur'),
+				DateModification: document.getElementById('dateModification'),
+				DateErreur: document.getElementById('dateErreur'),
+				DateDerniereConnexion: document.getElementById('dateDerniereConnexion'),
+				DateCreation: document.getElementById('dateCreation'),
+				IdFicheAgent: document.getElementById('IdFicheAgent'),
+				EtatCompteAgent: document.getElementById('etatCompteAgent'),
+				Mailperso: document.getElementById('Mailperso'),
+				Mailpro: document.getElementById('Mailpro'),
+				MauvaiseAdMail: document.getElementById('MauvaiseAdMail'),
+				BonneAdMail: document.getElementById('BonneAdMail'),
+				Collectivite: document.getElementById('collectivite'),
+				Nom: document.getElementById('Nom'),
+				AdMailGestionnaire: document.getElementById('AdMailGestionnaire'),
+				Telephone: document.getElementById('telephone')
+			};
+
+			// Vérifier si CompteRetrouve est réglé sur "OUI"
+			const compteRetrouve = elements.CompteRetrouve.value;
+			if (compteRetrouve === "OUI") {
+				// Vérifier et imposer l'obligation des champs
+				const requiredFields = ['DateModification', 'DateCreation'];
+				for (const field of requiredFields) {
+					if (!elements[field].value.trim()) {
+						//alert("Veuillez renseigner la date modification mot de passe et la date de création.");
+						return; // Arrêter l'exécution si l'un des champs obligatoires est vide
+					}
+				}
+			} else {
+				// Rendre les champs non obligatoires
+				for (const field of ['DateModification', 'DateCreation']) {
+					elements[field].required = false;
+				}
+			}
+
+			// Fonction pour convertir la date
+			const convertDate = (timestamp) => {
+				if (!timestamp) return '';
+				const date = new Date(parseInt(timestamp, 10) / 10000 - 11644473600000);
+				return date.toISOString().slice(0, 19) + 'Z';
+			};
+
+			// Construction du texte à copier
+			let textToCopy = `--------------------------------------FORMADIST--------------------------------------
+		Vérification de l'état du compte Formadist
+
+		Matricule: ${elements.Matricule.value}
+		Identifiant Formadist retrouvé: ${elements.Identifiant.value}
+		Département vérifié: ${elements.Departement.value.startsWith("97") ? elements.Departement.value.substring(0, 3) : elements.Departement.value.substring(0, 2)}
+		Délégation: ${elements.Delegation.value}
+
+		------------------------------------------WSO2------------------------------------------
+		Vérification de l'état du Mon Compte CNFPT
+
+		${compteRetrouve === "NON" ? "=> Pas de compte retrouvé dans WSO2\n" : ''}
+		Courriel principal: ${elements.CourrielPrincipal.value}
+		Courriel de secours: ${elements.CourrielSecours.value}
+		Account Locked: ${elements.AccountLocked.value}
+		Locked Reason: ${elements.LockedReason.value}
+		--------------------------------------------------------------------------------------------
+		Compte E-Communautés: ${elements.CompteECommunautes.value}
+		sAMAccountName: ${elements.SAMAccountName.value}
+		--------------------------------------------------------------------------------------------
+		Utilisateur (identifiant technique): ${elements.Utilisateur.value}
+		Date modification mot de passe*: ${convertDate(elements.DateModification.value)}
+		Date erreur mot de passe: ${convertDate(elements.DateErreur.value)}
+		Date de dernière connexion: ${convertDate(elements.DateDerniereConnexion.value)}
+		Date de création*: ${elements.DateCreation.value}
+
+		--------------------------------------------IEL---------------------------------------------
+		Vérification IEL (cas mail erroné)
+
+		Identifiant fiche agent : ${elements.IdFicheAgent.value}
+		Etat du Compte agent : ${elements.EtatCompteAgent.value}
+		Mail du champ 'Courriel personnel' Fiche agent IEL : ${elements.Mailperso.value}
+		Mail du champ 'Courriel professionnel' Fiche agent IEL : ${elements.Mailpro.value}
+		Mauvaise adresse mail : ${elements.MauvaiseAdMail.value}
+		Bonne adresse mail : ${elements.BonneAdMail.value}
+		Collectivité : ${elements.Collectivite.value}
+		Nom du gestionnaire : ${elements.Nom.value}
+		Adresse courriel du gestionnaire : ${elements.AdMailGestionnaire.value}
+		Téléphone : ${elements.Telephone.value}
+		--------------------------------------------------------------------------------------------`;
+
+			// Créer et copier le texte dans le presse-papiers
+			const tempTextArea = document.createElement("textarea");
+			tempTextArea.value = textToCopy;
+			document.body.appendChild(tempTextArea);
+			tempTextArea.select();
+			document.execCommand("copy");
+			
+			// Supprimer l'élément temporaire après la copie
+			//document.body.removeChild(tempTextArea);
+		}
+	
+	function clearFormFields() {
+		document.getElementById('Matricule').value = '';
+		document.getElementById('Identifiant').value = '';
+		document.getElementById('Département').value = '';
+		document.getElementById('Délégation').value = '';
+		document.getElementById('courrielPrincipal').value = '';
+		document.getElementById('courrielSecours').value = '';
+		document.getElementById('accountLocked').checked = false;
+		document.getElementById('lockedReason').value = '';
+		document.getElementById('compteECommunautes').checked = false;
+		document.getElementById('sAMAccountName').value = '';
+		document.getElementById('Utilisateur').value = '';
+		document.getElementById('dateModification').value = '';
+		document.getElementById('dateErreur').value = '';
+		document.getElementById('dateDerniereConnexion').value = '';
+		document.getElementById('dateCreation').value = '';
+		document.getElementById('IdFicheAgent').value = '';
+		document.getElementById('etatCompteAgent').value = 'SANS';
+		document.getElementById('Mailperso').value = '';
+		document.getElementById('Mailpro').value = '';
+		document.getElementById('MauvaiseAdMail').value = '';
+		document.getElementById('BonneAdMail').value = '';
+		document.getElementById('collectivite').value = '';
+		document.getElementById('Nom').value = '';
+		document.getElementById('AdMailGestionnaire').value = '';
+		document.getElementById('telephone').value = '';
+	}
+
+	document.addEventListener('keydown', function(event) {
+		// Vérifie si la combinaison de touches pressées est Ctrl+C
+		if (event.ctrlKey && event.key === 'x') {
+			// Empêche le comportement par défaut de Ctrl+C (copier)
+			event.preventDefault();
+			
+			// Appelle la fonction de copie de texte
+			copyText();
+			
+			// Vide les champs du formulaire
+			clearFormFields();
+		}
+	});
+
+	
+	
+	
+    </script>
+</head>
+<body>
+    <!-- Votre code HTML ici -->
+    <center>
+        <div id="entete">
+            <p style="color:#FFFFFF";><font size="6" face="calibri"><b>Projet CNFPT</b></p>
+        </div>
+    </center>
+
+    <br> <br> <br>
+
+    <center>
+        <table>
+            <thead>
+		<tr>
+			<td><p><font size="5" face ="calibri"><b>Générateur de mots de passe</b></font></p></td>
+		
+			<th colspan="2"><p style="color:#FFFFFF";><font size="5" face ="calibri"><b>Groupe d'affectation IEL en Délégation</b></p></th>
+		</tr>
+	</thead>
+	
+			<tr>
+				<td>
+					<p><font size="5" face ="calibri"><button class="favorite styled"type="button" id="bouton" onclick="search_mdp(10, 99)"> Cliquez ici </font></button></p>
+					<p><font size="5" face ="calibri"> Couleurs : &nbsp <b><span id="COULEURS"></span><span id="Chiffre_Couleurs"></span></b></font></p>
+					<p><font size="5" face ="calibri"> Météo : &nbsp <b><span id="METEO"></span><span id="Chiffre_Meteo"></span></b></font></p>
+					<p><font size="5" face ="calibri"> Nature : &nbsp <b><span id="NATURE"></span><span id="Chiffre_Nature"></span></b></font></p>
+					<p><font size="5" face ="calibri"> Formation : &nbsp <b><span id="FORMATION"></span><span id="Chiffre_Formation"></span></b></font></p>
+					<p><font size="5" face ="calibri"> Sports : &nbsp <b><span id="SPORTS"></span><span id="Chiffre_Sports"></span></b></font></p>
+					
+					<br><br>			
+					
+					<p><font size="5" face ="calibri"><b>Nouveau mot de passe :</b></p>
+
+					<div class="centre">
+					<div class="titre_centre">
+					<select id="choix_categorie" class="liste">
+					<option value="00">Sélectionnez une catégorie</option>
+					<option value="03">Couleurs</option>
+					<option value="05">Météo</option>
+					<option value="06">Nature</option>
+					<option value="07">Formation</option>
+					<option value="09">Sports</option>
+					</select>
+					</div>
+					</div>
+					
+					<p><input id="additionbar"  type="text" name="addition" placeholder="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button class="favorite styled"type="button" id="bouton"  onclick="save_password()">Ajouter</font></button></p>
+
+				</td>		
+				
+				<td>
+
+					<!-- création du champ de recherche et du boutton "Valider" -->
+						<p><font size="5" face ="calibri">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Code structure :<input id="searchbarStructure"  type="text" 
+							name="search" placeholder="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button class="favorite styled"type="button" id="bouton"  onclick="search_delegation()">Valider</font></button></p>
+						<p><font size="5" face ="calibri">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Département :<input id="searchbarDepartement"  type="text" 
+							name="search" placeholder="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button class="favorite styled"type="button" id="bouton"  onclick="search_delegation()">Valider</font></button></p>
+
+					<!-- Affiche le nom de l'ancienne délegation -->		
+					<p><font size="5" face ="calibri">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Délégation : &nbsp <b><span id="delegation"></span></b></font></p>
+					<p><font size="5" face ="calibri">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Groupe d'affectation : &nbsp <b><span id="groupe"></span></b></font>&nbsp &nbsp <button class="favorite styled" type="button" id="bouton" onclick="copyGroupe()">Copier</button></p> 
+						
+
+					
+					<CENTER>
+					 
+					<font size="5">
+					<table>
+						<thead>
+							<tr>
+								<p><font size="5" face ="calibri"><b>Institut national spécialisé d'études territoriales (INSET)</b></p>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><CENTER><font size="5" face ="calibri">Inset Angers </CENTER></td>
+								<td><CENTER><font size="5" face ="calibri">ANG-MOA-N1-FORM-IEL-GDA</CENTER></td>
+								<td><button class="copy-button" type="button" id="bouton" onclick="copyInset('ANG-MOA-N1-FORM-IEL-GDA')">Copier</button></td>
+							</tr>
+						</tbody>
+						<tbody>
+							<tr>
+								<td><CENTER><font size="5" face ="calibri">Inset Dunkerque </CENTER></td>
+								<td><CENTER><font size="5" face ="calibri">DUN-MOA-N1-FORM-IEL-GDA</CENTER></td>
+								<td><button class="copy-button" type="button" id="bouton" onclick="copyInset('DUN-MOA-N1-FORM-IEL-GDA')">Copier</button></td>
+							</tr>
+						</tbody>
+						<tbody>
+							<tr>
+								<td><CENTER><font size="5" face ="calibri">Inset Montpellier</CENTER></td>
+								<td><CENTER><font size="5" face ="calibri">MON-MOA-N1-FORM-IEL-GDA</CENTER></td>
+								<td><button class="copy-button" type="button" id="bouton" onclick="copyInset('MON-MOA-N1-FORM-IEL-GDA')">Copier</button></td>
+							</tr>
+						</tbody>
+						<tbody>
+							<tr>
+								<td><CENTER><font size="5" face ="calibri">Inset Nancy</CENTER></td>
+								<td><CENTER><font size="5" face ="calibri">NCY-MOA-N1-FORM-IEL-GDA</CENTER></td>
+								<td><button class="copy-button" type="button" id="bouton" onclick="copyInset('NCY-MOA-N1-FORM-IEL-GDA')">Copier</button></td>
+							</tr>
+						</tbody>
+						<tbody>
+							<tr>
+								<td><CENTER><font size="5" face ="calibri">INET Strasbourg</CENTER></td>
+								<td><CENTER><font size="5" face ="calibri">STR-MOE-N1-RSI</CENTER></td>
+								<td><button class="copy-button" type="button" id="bouton" onclick="copyInset('STR-MOE-N1-RSI')">Copier</button></td>
+							</tr>
+						</tbody>
+					</table>
+
+					</CENTER>
+				</td>
+			</tr>
+
+	
+        </table>
+	</center>
+	
+
+	<font size="5" face="calibri">
+     	
+    <form>
+        <fieldset>
+		<button id="bouton" onclick="copyText()">Copier - Template Vérification</button>
+
+
+			<div>
+                <p class="bold" style="color: White;">Vérification de l'état du compte Formadist</p>
+            </div>
+			<div>
+                <label for="Matricule">Matricule :</label>
+                <input type="text" id="Matricule" name="Matricule" autocomplete="off">
+            </div>
+			<div>
+                <label for="Identifiant">Identifiant Formadist retrouvé :</label>
+                <input type="text" id="Identifiant" name="Identifiant" autocomplete="off">
+            </div>
+			<div>
+                <label for="Département">Département vérifié :</label>
+                <input type="text" id="Département" name="Département" autocomplete="off">
+            </div>
+			<div>
+                <label for="Délégation">Délégation :</label>
+                <input type="text" id="Délégation" name="Délégation" autocomplete="off">
+            </div>
+			<div>
+                <p class="bold" style="color: White;">Vérification de l'état du Mon Compte CNFPT</p>
+            </div>
+			<div>
+				<label for="CompteRetrouve">Compte retrouvé dans WSO2 :</label>
+				<select id="CompteRetrouve">
+					<option value="OUI">OUI</option>
+					<option value="NON">NON</option>
+				</select>
+			</div>
+            <div>
+                <label for="courrielPrincipal">Courriel principal :</label>
+                <input type="text" id="courrielPrincipal" name="courrielPrincipal" autocomplete="off">
+            </div>
+            <div>
+                <label for="courrielSecours">Courriel de secours :</label>
+                <input type="text" id="courrielSecours" name="courrielSecours" autocomplete="off">
+            </div>
+			<div>
+				<label for="AccountLocked">Account Locked :</label>
+				<select id="AccountLocked">
+					<option value="NON">NON</option>
+					<option value="OUI">OUI</option>
+				</select>
+			</div>
+            <div>
+                <label for="lockedReason">Locked Reason :</label>
+                <input type="text" id="lockedReason" name="lockedReason" autocomplete="off">
+            </div>
+			<div>
+				<label for="compteECommunautes">Compte E-Communautés :</label>
+				<select id="compteECommunautes">
+					<option value="NON">NON</option>
+					<option value="OUI">OUI</option>
+				</select>
+			</div>
+            <div>
+                <label for="sAMAccountName">sAMAccountName :</label>
+                <input type="text" id="sAMAccountName" name="sAMAccountName" autocomplete="off">
+            </div>
+			<div>
+                <label for="Utilisateur">Utilisateur (identifiant technique) :</label>
+                <input type="text" id="Utilisateur" name="Utilisateur" autocomplete="off">
+            </div>
+            <div>
+                <label for="dateModification">Date modification mot de passe<span class="required">*</span> :</label>
+                <input type="text" id="dateModification" name="dateModification" autocomplete="off" required>
+            </div>
+            <div>
+                <label for="dateErreur">Date erreur mot de passe :</label>
+                <input type="text" id="dateErreur" name="dateErreur" autocomplete="off">
+            </div>
+            <div>
+                <label for="dateDerniereConnexion">Date de dernière connexion :</label>
+                <input type="text" id="dateDerniereConnexion" name="dateDerniereConnexion" autocomplete="off">
+            </div>
+            <div>
+                <label for="dateCreation">Date de création<span class="required">*</span> :</label>
+                <input type="text" id="dateCreation" name="dateCreation" autocomplete="off" required>
+            </div>
+			<div>
+                <p class="bold" style="color: White;">Vérification IEL (cas mail erroné)</p>
+            </div>
+			<div>
+                <label for="IdFicheAgent">Identifiant fiche agent :</label>
+                <input type="text" id="IdFicheAgent" name="IdFicheAgent" autocomplete="off">
+            </div>
+            <div>
+				<label for="etatCompteAgent">Etat du Compte agent :</label>
+				<select id="etatCompteAgent">
+					<option value="SANS">SANS</option>
+					<option value="VALIDE">VALIDE</option>
+					<option value="DEMANDE">DEMANDE</option>
+					<option value="REFUSE">REFUSE</option>
+				</select>
+			</div>
+			<div>
+                <label for="Mailperso">Mail du champ 'Courriel personnel' : </label>
+                <input type="text" id="Mailperso" name="Mailperso" autocomplete="off">
+            </div>
+			<div>
+                <label for="Mailpro">Mail du champ 'Courriel professionnel' : </label>
+                <input type="text" id="Mailpro" name="Mailpro" autocomplete="off">
+            </div>
+			<div>
+                <label for="MauvaiseAdMail">Mauvaise adresse mail : </label>
+                <input type="text" id="MauvaiseAdMail" name="MauvaiseAdMail" autocomplete="off">
+            </div>
+			<div>
+                <label for="BonneAdMail">Bonne adresse mail :</label>
+                <input type="text" id="BonneAdMail" name="BonneAdMail" autocomplete="off">
+            </div>
+			
+			<div>
+                <label for="collectivite">Collectivité : </label>
+                <input type="text" id="collectivite" name="collectivite" autocomplete="off">
+            </div>
+			<div>
+                <label for="Nom">Nom du gestionnaire : </label>
+                <input type="text" id="Nom" name="Nom" autocomplete="off">
+            </div>
+			<div>
+                <label for="AdMailGestionnaire">Adresse courriel du gestionnaire : </label>
+                <input type="text" id="AdMailGestionnaire" name="AdMailGestionnaire" autocomplete="off">
+            </div>
+			<div>
+                <label for="telephone">Téléphone : </label>
+                <input type="text" id="telephone" name="telephone" autocomplete="off">
+            </div>
+        </fieldset>
+    </form>
+
+	<br> <br> <br>
+		
+		
+    
+
+</body>
+</html>
